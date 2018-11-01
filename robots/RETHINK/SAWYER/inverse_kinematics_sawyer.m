@@ -12,7 +12,7 @@
 %   Tf--> final position/orientation wanted as a homogeneous matrix
 function q = inverse_kinematics_sawyer(robot, Tf, q0)
 global parameters
-% Obtain thea matriz de posición/orientación en Quaternion representation
+% Obtain thea matriz de posiciï¿½n/orientaciï¿½n en Quaternion representation
 Qf = T2quaternion(Tf);
 Pf = Tf(1:3,4);
 q=q0;
@@ -52,7 +52,7 @@ fprintf('INVERSE KINEMATICS FAILED: COULD NOT REACH POSITION/ORIENTATION\n')
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%En base a la posición y orientación final, calcular cuáles deben ser las
+%En base a la posiciï¿½n y orientaciï¿½n final, calcular cuï¿½les deben ser las
 %velocidades...
 % Esto es diferente a calcular la velocidades cuando ya hay contacto y se
 % trata de un problema de control... pero es parecido
@@ -63,7 +63,7 @@ v = (Pf-Pi);
 v = v(:);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%En base a la posición y orientación final, calcular cuáles deben ser las
+%En base a la posiciï¿½n y orientaciï¿½n final, calcular cuï¿½les deben ser las
 %velocidades...
 % Esto es diferente a calcular la velocidades cuando ya hay contacto y se
 % trata de un problema de control... pero es parecido
@@ -107,6 +107,8 @@ w=axis*angle/total_time;
 % check whether orientation has been reached
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function reach = reached_orientation(Qf, Qi)
+Qf=Qf/norm(Qf);
+Qi=Qi/norm(Qi);
 Q = Qf-Qi;
 reach = sqrt(Q(1)^2 + Q(2)^2 + Q(3)^2 + Q(4)^2);
 

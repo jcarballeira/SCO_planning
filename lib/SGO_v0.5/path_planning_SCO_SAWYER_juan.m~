@@ -124,7 +124,7 @@ for i=1:size(pk.pathq,2)
     errors_pos=[errors_pos error_pos];
     
     ori_prod=qprod(qconj(ref_rot/norm(ref_rot)),act_rot/norm(act_rot));
-    error_ori= 2*acosd(ori_prod(1));
+    len=sqrt(ori_prod(2)^2 + ori_prod(3)^2 + ori_prod(4)^2);
     ThetaInDegrees = acosd(dot(act_n,ref_n)/(norm(act_n)*norm(ref_n)));
     ang_norms=[ang_norms ThetaInDegrees];
     errors_ori=[errors_ori error_ori];

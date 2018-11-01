@@ -3,11 +3,10 @@ function pathG = build_initial_path(first_pos)
 global parameters
 global robot
 pathG=[];
-first_pos=1;
+
     line = parameters.trajectory{1}.line;
 %     p0 = line(:,1);
 %     p1 = line(:,2);
-    T0 = parameters.trajectory{1}.T0;
     for p=1:parameters.N
         pnt=line(:,first_pos+p-1);
         pathG{p}.T=obtain_TFmatrix(pnt);
@@ -26,6 +25,7 @@ function T=obtain_TFmatrix(pt)
 global parameters
 global robot
 n=pt-parameters.obstacles{1}.center;
+n=n/norm(n);
 %this is vector z7 of the end effector
 z7 = n;
 x0=[1 0 0]';

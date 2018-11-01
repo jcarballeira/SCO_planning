@@ -22,7 +22,7 @@ for i=1:1:size(qq,2)
          % Define the input grid (in 3D)
         [x3, y3, z3] = meshgrid(linspace(-1,1));
         % Compute the implicitly defined function (sphere)
-        f1 = (x3-sph_ctr(1)).^2 + (y3-sph_ctr(2)).^2 + (z3-sph_ctr(3)).^2 - sph_radio;
+        f1 = (x3-sph_ctr(1)).^2 + (y3-sph_ctr(2)).^2 + (z3-sph_ctr(3)).^2 - sph_radio^2;
 
         % Next surface is z = 2*y - 6*x^3, which can also be expressed as
         % Visualize the two surfaces.

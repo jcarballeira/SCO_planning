@@ -22,16 +22,22 @@ K = parameters.K;
 %generate K different paths
 %starting from arbitrary positions.
 manips=[];
+G=[];
 for k=1:K
   q0 = uniform(-pi, pi, 1, robot.DOF)';
   [pathq, pathT] = plan_path_moore_penrose(robot, q0);
   %generate particle
-  G{k}.pathq = pathq;
-  G{k}.pathT = pathT;
+  g.pathq = pathq;
+  g.pathT = pathT;
+  %G{k}.pathq = pathq;
+  %G{k}.pathT = pathT;
   manip = compute_manip(robot, pathq);
   manipsum=sum(manip);
   manips=[manips manipsum];
 end
+
+for
+
 
 %pick the maximum manipulability one to compare with the result
 [val, index]=max(manips);
